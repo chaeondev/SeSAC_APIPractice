@@ -16,6 +16,7 @@
 		DE0AFAC92A84BE9A0058BF41 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = DE0AFAC82A84BE9A0058BF41 /* Kingfisher */; };
 		DE0AFACC2A84BEA60058BF41 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = DE0AFACB2A84BEA60058BF41 /* Alamofire */; };
 		DE0AFACF2A84BEB30058BF41 /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = DE0AFACE2A84BEB30058BF41 /* SwiftyJSON */; };
+		DE0AFAD12A84CD650058BF41 /* RandomBeerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE0AFAD02A84CD650058BF41 /* RandomBeerViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,7 @@
 		DE0AFABA2A83E7630058BF41 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DE0AFABD2A83E7630058BF41 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DE0AFABF2A83E7630058BF41 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DE0AFAD02A84CD650058BF41 /* RandomBeerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomBeerViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 		DE0AFAB02A83E7620058BF41 /* APIPractice */ = {
 			isa = PBXGroup;
 			children = (
+				DE0AFAD02A84CD650058BF41 /* RandomBeerViewController.swift */,
 				DE0AFAB12A83E7620058BF41 /* AppDelegate.swift */,
 				DE0AFAB32A83E7620058BF41 /* SceneDelegate.swift */,
 				DE0AFAB52A83E7620058BF41 /* LottoViewController.swift */,
@@ -157,6 +160,7 @@
 				DE0AFAB62A83E7620058BF41 /* LottoViewController.swift in Sources */,
 				DE0AFAB22A83E7620058BF41 /* AppDelegate.swift in Sources */,
 				DE0AFAB42A83E7620058BF41 /* SceneDelegate.swift in Sources */,
+				DE0AFAD12A84CD650058BF41 /* RandomBeerViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
