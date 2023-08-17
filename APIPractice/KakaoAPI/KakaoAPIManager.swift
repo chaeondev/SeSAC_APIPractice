@@ -15,9 +15,10 @@ class KakaoAPIManager {
     
     let header: HTTPHeaders = ["Authorization": "KakaoAK \(APIKey.kakaoKey)"]
     
-    func callRequest(query: String, completionHandler: @escaping (SearchVideo) -> Void) {
+    func callRequest(query: String, page: Int, completionHandler: @escaping (SearchVideo) -> Void) {
         guard let text = query.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else { return }
-        let url = URL.baseURL + text
+        let pageString = "&page=\(page)"
+        let url = URL.baseURL + text + pageString
         
         AF.request(url, method: .get, headers: header).validate(statusCode: 200...500)
             .responseDecodable(of: SearchVideo.self) { response in

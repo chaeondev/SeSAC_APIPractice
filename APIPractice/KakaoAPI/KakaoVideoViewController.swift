@@ -13,7 +13,9 @@ class KakaoVideoViewController: UIViewController {
     @IBOutlet var searchBar: UISearchBar!
     @IBOutlet var videoTableView: UITableView!
     
-    var videoList: SearchVideo = SearchVideo(g: [], meta: Meta(totalCount: 0, isEnd: false, pageableCount: 0), documents: [], m: M(), ds: [])
+    var videoList: SearchVideo = SearchVideo(meta: Meta(totalCount: 0, isEnd: false, pageableCount: 0), documents: [])
+    var page = 1
+    var isEnd = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,9 +25,7 @@ class KakaoVideoViewController: UIViewController {
         videoTableView.prefetchDataSource = self
         videoTableView.rowHeight = 140
         
-        
-
-        
+        searchBar.delegate = self
     }
     
 
@@ -35,11 +35,15 @@ extension KakaoVideoViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         
+        page = 1
         guard let query = searchBar.text else { return }
-        KakaoAPIManager.shared.callRequest(query: query) { data in
+        KakaoAPIManager.shared.callRequest(query: query, page: page) { data in
+            self.isEnd = data.meta.isEnd
             self.videoList = data
             self.videoTableView.reloadData()
+            self.videoTableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
         }
+        
         
         
     }
@@ -74,6 +78,15 @@ extension KakaoVideoViewController: UITableViewDelegate, UITableViewDataSource, 
     
     func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
         
+        for indexPath in indexPaths {
+            if videoList.documents.count - 1 == indexPath.row && page < 15 && isEnd == false { // !isEnd 이렇게 표현할 수도 있음
+                page += 1
+                KakaoAPIManager.shared.callRequest(query: searchBar.text!, page: page) { data in
+                    self.videoList.documents.append(contentsOf: data.documents)
+                    self.videoTableView.reloadData()
+                }
+            }
+        }
     }
     
     
